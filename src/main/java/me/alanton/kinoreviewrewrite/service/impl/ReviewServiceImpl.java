@@ -13,6 +13,7 @@ import me.alanton.kinoreviewrewrite.mapper.ReviewMapper;
 import me.alanton.kinoreviewrewrite.repository.MovieRepository;
 import me.alanton.kinoreviewrewrite.repository.ReviewRepository;
 import me.alanton.kinoreviewrewrite.service.ReviewService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,6 +31,7 @@ public class ReviewServiceImpl implements ReviewService {
     private final MovieRepository movieRepository;
 
     @Override
+    @Cacheable(value = "reviews", key = "#id")
     public ReviewResponse getReviewById(UUID id) {
         log.info("Fetching review with id: {}", id);
 
@@ -45,6 +47,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     @Transactional
+    @Cacheable(value = "reviews", key = "#movieId")
     public Page<ReviewResponse> getMovieReviews(Long movieId, Pageable pageable) {
         log.info("Fetching reviews for movie with id: {} with pagination: {}", movieId, pageable);
 

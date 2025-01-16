@@ -1,6 +1,8 @@
 package me.alanton.kinoreviewrewrite.dto.response;
 
 import lombok.*;
+
+import java.io.Serializable;
 import java.util.UUID;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -31,4 +33,4 @@ public record ReviewResponse(
         ActorResponse actor,
 
         MovieResponse movie
-) { }
+) implements Serializable { }

@@ -3,6 +3,7 @@ package me.alanton.kinoreviewrewrite.dto.response;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,4 +25,4 @@ public record ActorResponse(
 
         @Schema(description = "The roles assigned to the actor", requiredMode = Schema.RequiredMode.REQUIRED)
         Set<RoleResponse> roles
-) { }
+) implements Serializable { }
