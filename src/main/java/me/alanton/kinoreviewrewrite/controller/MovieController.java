@@ -13,6 +13,8 @@ import me.alanton.kinoreviewrewrite.dto.response.MovieResponse;
 import me.alanton.kinoreviewrewrite.entity.Actor;
 import me.alanton.kinoreviewrewrite.entity.Movie;
 import me.alanton.kinoreviewrewrite.service.MovieService;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

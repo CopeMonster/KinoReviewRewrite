@@ -9,6 +9,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  data:
+    redis:
+      host: localhost
+      port: 6380
+
 
 server:
   port: 8000

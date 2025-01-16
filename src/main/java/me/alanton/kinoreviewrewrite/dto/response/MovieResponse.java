@@ -2,6 +2,7 @@ package me.alanton.kinoreviewrewrite.dto.response;
 
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -36,4 +37,4 @@ public record MovieResponse(
 
         @Schema(description = "Rating of the movie (scale 1-10)", example = "7.5", requiredMode = Schema.RequiredMode.REQUIRED)
         Float rating
-) { }
+) implements Serializable { }

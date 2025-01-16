@@ -16,6 +16,7 @@ import me.alanton.kinoreviewrewrite.repository.GenreRepository;
 import me.alanton.kinoreviewrewrite.repository.MovieDocumentRepository;
 import me.alanton.kinoreviewrewrite.repository.MovieRepository;
 import me.alanton.kinoreviewrewrite.service.MovieService;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -38,6 +39,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     @Transactional
+    @Cacheable(value = "movies", key = "#id")
     public MovieResponse getMovieById(Long id) {
         log.info("Fetching movie with id: {}", id);
         Movie movie = movieRepository.findById(id)
