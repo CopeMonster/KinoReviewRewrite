@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import me.alanton.kinoreviewrewrite.dto.request.MovieRequest;
 import me.alanton.kinoreviewrewrite.dto.response.MovieResponse;
 import me.alanton.kinoreviewrewrite.entity.Actor;
+import me.alanton.kinoreviewrewrite.entity.Movie;
 import me.alanton.kinoreviewrewrite.service.MovieService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +31,16 @@ import java.util.List;
 @Tag(name = "Movie controller", description = "CRUD operations for movies")
 public class MovieController {
     private final MovieService movieService;
+
+    @GetMapping("/search")
+    public ResponseEntity<Page<MovieResponse>> searchMovies(
+            @RequestParam("query") String query,
+            Pageable pageable
+    ) {
+        Page<MovieResponse> movieResponses = movieService.searchMoviesViaElastic(query, pageable);
+
+        return ResponseEntity.ok(movieResponses);
+    }
 
     @GetMapping("/{id}")
     @Operation(

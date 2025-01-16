@@ -11,6 +11,15 @@ services:
       - '5432:5432'
     volumes:
       - ./pgdata:/var/lib/postgresql/data/pgdata
+  elastic_search:
+    container_name: elastic_search
+    image: elasticsearch:8.9.2
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      xpack.security.http.ssl.enabled: "false"
+    ports:
+      - '9200:9200'
 volumes:
   pgdata:
     driver: local

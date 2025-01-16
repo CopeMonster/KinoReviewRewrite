@@ -12,4 +12,5 @@ public interface MovieService {
     MovieResponse updateMovie(Long id, MovieRequest requestDTO);
     void deleteMovie(Long id);
     void updateAverageRating();
+    Page<MovieResponse> searchMoviesViaElastic(String query, Pageable pageable);
 }
