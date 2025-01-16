@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: KinoReview
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/kino_review
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 8000
+
+auth:
+  token:
+    secret: M2I1OWExNzFlNGRhOWRiMGZiM2FlM2E1ZjFkM2E4ZDI4YTg5ZTgwMjk0MmY1OGYyMzk0ZGVjYmY=
+    access:
+      expiration:
+        time: 3600
+    refresh:
+      expiration:
+        time: 2592000
+
